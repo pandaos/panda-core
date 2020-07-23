@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Exec=panda-session
+TryExec=panda-session
+Name=PandaOS
+Keywords=session
+Comment=session

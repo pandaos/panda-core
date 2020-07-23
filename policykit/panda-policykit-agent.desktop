@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=PolicyKit Handler
+TryExec=panda-policykit-agent
+Exec=panda-policykit-agent
+NoDisplay=true

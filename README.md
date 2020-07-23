@@ -1,0 +1,28 @@
+# Panda Modules
+
+System backend and start session and more.
+
+## Dependencies
+
+```shell
+sudo pacman -S pkgconf extra-cmake-modules qt5-base qt5-x11extras qt5-tools kidletime polkit polkit-qt5
+```
+
+## Build
+
+```shell
+mkdir build
+cd build
+cmake ..
+make
+```
+
+## Install
+
+```shell
+sudo make install
+```
+
+## License
+
+panda-modules is licensed under GPLv3.
