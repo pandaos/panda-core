@@ -8,7 +8,8 @@
 #include <QDir>
 
 Application::Application(int &argc, char **argv)
-    : QApplication(argc, argv)
+    : QApplication(argc, argv),
+      m_audioManager(new AudioManager(this))
 {
     new DBusAdaptor(this);
     // connect to D-Bus and register as an object:

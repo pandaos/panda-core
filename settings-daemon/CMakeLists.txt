@@ -1,9 +1,13 @@
 project(panda-settings-daemon)
 set(TARGET panda-settings-daemon)
 
+find_package(PulseAudio)
+
 file (GLOB_RECURSE SRCS
   "*.cpp"
   "*.h"
+  "audio/*.cpp"
+  "audio/*.h"
 )
 
 set(SOURCES ${SRCS})
@@ -17,6 +21,7 @@ target_link_libraries(${TARGET}
         Qt5::Gui
         Qt5::Widgets
         Qt5::DBus
+        ${PULSEAUDIO_LIBRARY}
 )
 
 install(TARGETS ${TARGET} DESTINATION /usr/bin)

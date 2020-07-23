@@ -10,9 +10,15 @@ class DBusAdaptor : public QDBusAbstractAdaptor
     Q_CLASSINFO("D-Bus Interface", "org.panda.settings")
 
 public:
-    DBusAdaptor(Application *app) : QDBusAbstractAdaptor(app) {
+    DBusAdaptor(Application *app) 
+      : QDBusAbstractAdaptor(app),
+        m_app(app)
+    {
 
     };
+
+private:
+    Application *m_app;
 };
 
 #endif
