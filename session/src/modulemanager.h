@@ -35,6 +35,7 @@ public slots:
 
 private:
     void startWm();
+    void startSettingsDaemon();
     void startAutostartApps();
 
 private slots:

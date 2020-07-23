@@ -25,6 +25,7 @@ ModuleManager::~ModuleManager()
 void ModuleManager::startup()
 {
     startWm();
+    startSettingsDaemon();
     startAutostartApps();
 
     QProcess *deskProc = new QProcess(this);
@@ -32,10 +33,10 @@ void ModuleManager::startup()
     QProcess *topbarProc = new QProcess(this);
     QProcess *launcherProc = new QProcess(this);
 
-    deskProc->start("panda-files", QStringList() << "--desktop");
-    taskProc->start("panda-dock");
-    topbarProc->start("panda-topbar");
-    launcherProc->start("panda-launcher");
+    deskProc->start("/usr/bin/panda-files", QStringList() << "--desktop");
+    taskProc->start("/usr/bin/panda-dock");
+    topbarProc->start("/usr/bin/panda-topbar");
+    launcherProc->start("/usr/bin/panda-launcher");
 }
 
 void ModuleManager::startProcess(const QString &name)
@@ -122,6 +123,12 @@ void ModuleManager::startWm()
     QTimer::singleShot(2000, &waitLoop, SLOT(quit()));
     waitLoop.exec();
     m_waitLoop = nullptr;
+}
+
+void ModuleManager::startSettingsDaemon()
+{
+    QProcess *process = new QProcess(this);
+    process->start("/usr/bin/panda-settings-daemon");
 }
 
 void ModuleManager::startAutostartApps()
