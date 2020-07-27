@@ -3,6 +3,7 @@
 
 #include <QtDBus>
 #include "modulemanager.h"
+#include "power/power.h"
 
 class SessionDBusAdaptor : public QDBusAbstractAdaptor
 {
@@ -11,8 +12,9 @@ class SessionDBusAdaptor : public QDBusAbstractAdaptor
 
 public:
     SessionDBusAdaptor(ModuleManager * manager)
-        : QDBusAbstractAdaptor(manager),
-          m_manager(manager)
+      : QDBusAbstractAdaptor(manager),
+        m_manager(manager),
+        m_power(false)
     {
         connect(m_manager, SIGNAL(moduleStateChanged(QString,bool)), SIGNAL(moduleStateChanged(QString, bool)));
     }
@@ -29,14 +31,14 @@ public slots:
     Q_NOREPLY void reboot()
     {
         m_manager->logout(false);
-        // m_power.reboot();
+        m_power.reboot();
         QCoreApplication::exit(0);
     }
 
     Q_NOREPLY void powerOff()
     {
         m_manager->logout(false);
-        // m_power.shutdown();
+        m_power.shutdown();
         QCoreApplication::exit(0);
     }
 
@@ -52,6 +54,7 @@ public slots:
 
 private:
     ModuleManager * m_manager;
+    Power m_power;
 };
 
 #endif

@@ -6,6 +6,8 @@ find_package(KF5 REQUIRED COMPONENTS IdleTime)
 file (GLOB_RECURSE SRCS
   "src/*.cpp"
   "src/*.h"
+  "src/power/*.h"
+  "src/power/*.cpp"
 )
 
 set(SOURCES ${SRCS})
