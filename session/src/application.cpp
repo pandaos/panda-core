@@ -38,7 +38,7 @@ Application::Application(int &argc, char **argv)
         qDebug() << "Could not sync environment to dbus.";
     }
 
-    QTimer::singleShot(0, m_moduleManager, &ModuleManager::startup);
+    QTimer::singleShot(100, m_moduleManager, &ModuleManager::startup);
 }
 
 int Application::runSync(const QString& program, const QStringList &args, const QStringList &env)
