@@ -3,6 +3,7 @@
 
 #include <QApplication>
 #include "audio/audiomanager.h"
+#include "theme/thememanager.h"
 
 class Application : public QApplication
 {
@@ -15,6 +16,7 @@ public:
 
 private:
     AudioManager *m_audioManager;
+    ThemeManager *m_themeManager;
 };
 
 #endif // APPLICATION_H

@@ -14,7 +14,7 @@ AudioManager::AudioManager(QObject *parent)
         connect(m_defaultSink, &AudioDevice::muteChanged, this, &AudioManager::muteChanged);
 
         new AudioDBusAdaptor(this);
-        QDBusConnection::sessionBus().registerObject(QStringLiteral("/PandaSettings"), this);
+        QDBusConnection::sessionBus().registerObject(QStringLiteral("/Audio"), this);
     }
 }
 

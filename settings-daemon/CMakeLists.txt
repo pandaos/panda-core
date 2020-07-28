@@ -8,6 +8,8 @@ file (GLOB_RECURSE SRCS
   "*.h"
   "audio/*.cpp"
   "audio/*.h"
+  "theme/*.h"
+  "theme/*.cpp"
 )
 
 set(SOURCES ${SRCS})

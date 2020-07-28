@@ -9,7 +9,8 @@
 
 Application::Application(int &argc, char **argv)
     : QApplication(argc, argv),
-      m_audioManager(new AudioManager(this))
+      m_audioManager(new AudioManager(this)),
+      m_themeManager(new ThemeManager(this))
 {
     new DBusAdaptor(this);
     // connect to D-Bus and register as an object:
