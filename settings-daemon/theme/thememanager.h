@@ -14,6 +14,15 @@ public:
     bool isDarkMode();
     void setDarkMode(bool darkMode);
 
+    QString systemFont();
+    void setSystemFont(const QString &fontFamily);
+
+    QString systemFixedFont();
+    void setSystemFixedFont(const QString &fontFamily);
+
+    qreal systemFontPointSize();
+    void setSystemFontPointSize(qreal fontSize);
+
 signals:
     void darkModeChanged(bool darkMode);
 
