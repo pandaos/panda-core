@@ -23,6 +23,9 @@ public:
     qreal systemFontPointSize();
     void setSystemFontPointSize(qreal fontSize);
 
+    qreal devicePixelRatio();
+    void setDevicePixelRatio(qreal ratio);
+
 signals:
     void darkModeChanged(bool darkMode);
 

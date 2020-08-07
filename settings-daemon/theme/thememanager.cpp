@@ -5,6 +5,7 @@
 static const QByteArray s_systemFontName = QByteArrayLiteral("Font");
 static const QByteArray s_systemFixedFontName = QByteArrayLiteral("FixedFont");
 static const QByteArray s_systemPointFontSize = QByteArrayLiteral("FontSize");
+static const QByteArray s_devicePixelRatio = QByteArrayLiteral("PixelRatio");
 
 ThemeManager::ThemeManager(QObject *parent)
   : QObject(parent),
@@ -55,10 +56,20 @@ void ThemeManager::setSystemFixedFont(const QString &fontFamily)
 
 qreal ThemeManager::systemFontPointSize()
 {
-    return m_settings->value(s_systemPointFontSize, 10.5).toDouble();
+    return m_settings->value(s_systemPointFontSize, 10.5).toReal();
 }
 
 void ThemeManager::setSystemFontPointSize(qreal fontSize)
 {
     m_settings->setValue(s_systemPointFontSize, fontSize);
+}
+
+qreal ThemeManager::devicePixelRatio()
+{
+    return m_settings->value(s_devicePixelRatio, 1.0).toReal();
+}
+
+void ThemeManager::setDevicePixelRatio(qreal ratio)
+{
+    m_settings->setValue(s_devicePixelRatio, ratio);
 }

@@ -30,6 +30,9 @@ public slots:
     qreal systemFontPointSize() { return m_manager->systemFontPointSize(); }
     void setSystemFontPointSize(qreal fontSize) { m_manager->setSystemFontPointSize(fontSize); }
 
+    qreal devicePixelRatio() { return m_manager->devicePixelRatio(); }
+    void setDevicePixelRatio(qreal ratio) { m_manager->setDevicePixelRatio(ratio); }
+
 Q_SIGNALS:
     void darkModeChanged(bool darkMode);
 
