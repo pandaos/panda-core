@@ -87,7 +87,8 @@ void Application::initLanguage()
 
 void Application::initScreenScaleFactors()
 {
-    const qreal scaleFactor = 1.0;
+    QSettings settings(QSettings::UserScope, "panda", "theme");
+    qreal scaleFactor = settings.value("PixelRatio", 1.0).toReal();
 
     qputenv("QT_SCREEN_SCALE_FACTORS", QByteArray::number(scaleFactor));
     qputenv("GDK_SCALE", QByteArray::number(scaleFactor, 'g', 0));
