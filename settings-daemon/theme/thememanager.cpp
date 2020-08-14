@@ -73,3 +73,8 @@ void ThemeManager::setDevicePixelRatio(qreal ratio)
 {
     m_settings->setValue(s_devicePixelRatio, ratio);
 }
+
+void ThemeManager::updateGtkFont()
+{
+
+}

@@ -91,6 +91,7 @@ void Application::initScreenScaleFactors()
     qreal scaleFactor = settings.value("PixelRatio", 1.0).toReal();
 
     qputenv("QT_SCREEN_SCALE_FACTORS", QByteArray::number(scaleFactor));
+    qputenv("QT_SCALE_FACTOR", QByteArray::number(scaleFactor));
     qputenv("GDK_SCALE", QByteArray::number(scaleFactor, 'g', 0));
     qputenv("GDK_DPI_SCALE", QByteArray::number(1.0 / scaleFactor, 'g', 3));
 }

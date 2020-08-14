@@ -4,6 +4,7 @@
 #include <QApplication>
 #include "audio/audiomanager.h"
 #include "theme/thememanager.h"
+#include "brightness/brightnessmanager.h"
 
 class Application : public QApplication
 {
@@ -17,6 +18,7 @@ public:
 private:
     AudioManager *m_audioManager;
     ThemeManager *m_themeManager;
+    BrightnessManager *m_brightnessManager;
 };
 
 #endif // APPLICATION_H

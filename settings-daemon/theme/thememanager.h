@@ -30,6 +30,9 @@ signals:
     void darkModeChanged(bool darkMode);
 
 private:
+    void updateGtkFont();
+
+private:
     QSettings *m_settings;
     bool m_isDarkMode;
 };
