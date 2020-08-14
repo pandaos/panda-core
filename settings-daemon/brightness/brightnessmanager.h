@@ -21,6 +21,7 @@
 #define BRIGHTNESSMANAGER_H
 
 #include <QObject>
+#include <QFileSystemWatcher>
 
 class BrightnessManager : public QObject
 {
@@ -29,6 +30,28 @@ class BrightnessManager : public QObject
 public:
     BrightnessManager(QObject *parent = nullptr);
     ~BrightnessManager();
+
+    int maxBrightness();
+    int brightness();
+
+    void setValue(int value);
+
+signals:
+    void brightnessChanged();
+
+private:
+    void init();
+    bool useWhitelistInit();
+    void initUsingWhitelist();
+    void initUsingBacklightType();
+
+private slots:
+    void handleFileChanged(const QString &path);
+
+private:
+    QFileSystemWatcher *m_fileWatcher;
+    int m_actualBacklight;
+    QString m_dirname;
 };
 
 #endif
