@@ -31,6 +31,7 @@ signals:
 
 private:
     void updateGtkFont();
+    void updateGtkDarkTheme();
 
 private:
     QSettings *m_settings;

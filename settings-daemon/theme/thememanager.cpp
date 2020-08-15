@@ -41,6 +41,9 @@ void ThemeManager::setDarkMode(bool darkMode)
 
     m_isDarkMode = darkMode;
     m_settings->setValue("DarkMode", darkMode);
+
+    updateGtkDarkTheme();
+
     emit darkModeChanged(m_isDarkMode);
 }
 
@@ -92,5 +95,14 @@ void ThemeManager::updateGtkFont()
     settings.setIniCodec("UTF-8");
     settings.beginGroup("Settings");
     settings.setValue("gtk-font-name", QString("%1 %2").arg(systemFont()).arg(systemFontPointSize()));
+    settings.sync();
+}
+
+void ThemeManager::updateGtkDarkTheme()
+{
+    QSettings settings(gtk3SettingsIniPath(), QSettings::IniFormat);
+    settings.setIniCodec("UTF-8");
+    settings.beginGroup("Settings");
+    settings.setValue("gtk-application-prefer-dark-theme", isDarkMode());
     settings.sync();
 }
