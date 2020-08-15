@@ -233,7 +233,7 @@ QString XdgDirs::configHome(bool createDir)
 QStringList XdgDirs::dataDirs(const QString &postfix)
 {
     QString d = QFile::decodeName(qgetenv("XDG_DATA_DIRS"));
-    QStringList dirs = d.split(QLatin1Char(':'), QString::SkipEmptyParts);
+    QStringList dirs = d.split(QLatin1Char(':'), Qt::SkipEmptyParts);
 
     if (dirs.isEmpty()) {
         dirs.append(QString::fromLatin1("/usr/local/share"));
@@ -261,7 +261,7 @@ QStringList XdgDirs::configDirs(const QString &postfix)
     if (env.isEmpty())
         dirs.append(QString::fromLatin1("/etc/xdg"));
     else
-        dirs = env.split(QLatin1Char(':'), QString::SkipEmptyParts);
+        dirs = env.split(QLatin1Char(':'), Qt::SkipEmptyParts);
 
     cleanAndAddPostfix(dirs, postfix);
     return dirs;

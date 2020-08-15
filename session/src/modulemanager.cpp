@@ -34,9 +34,9 @@ void ModuleManager::startup()
     QProcess *launcherProc = new QProcess(this);
 
     deskProc->start("/usr/bin/panda-files", QStringList() << "--desktop");
-    taskProc->start("/usr/bin/panda-dock");
-    topbarProc->start("/usr/bin/panda-topbar");
-    launcherProc->start("/usr/bin/panda-launcher");
+    taskProc->start("/usr/bin/panda-dock", QStringList());
+    topbarProc->start("/usr/bin/panda-topbar", QStringList());
+    launcherProc->start("/usr/bin/panda-launcher", QStringList());
 }
 
 void ModuleManager::startProcess(const QString &name)
@@ -114,7 +114,7 @@ void ModuleManager::logout(bool doExit)
 
 void ModuleManager::startWm()
 {
-    m_wmProcess->start("kwin_x11");
+    m_wmProcess->start("kwin_x11", QStringList());
 
     // Wait until the WM loads
     QEventLoop waitLoop;
@@ -128,7 +128,7 @@ void ModuleManager::startWm()
 void ModuleManager::startSettingsDaemon()
 {
     QProcess *process = new QProcess(this);
-    process->start("/usr/bin/panda-settings-daemon");
+    process->start("/usr/bin/panda-settings-daemon", QStringList());
 }
 
 void ModuleManager::startAutostartApps()
@@ -192,4 +192,3 @@ void ModuleManager::restartModules(int exitCode, QProcess::ExitStatus exitStatus
     mNameMap.remove(proc->fileName);
     proc->deleteLater();
 }
-

@@ -547,7 +547,7 @@ QStringList XdgDesktopFileData::getListValue(const XdgDesktopFile * q, const QSt
             return QStringList();
     }
 
-    return q->value(used_key).toString().split(QLatin1Char(';'), QString::SkipEmptyParts);
+    return q->value(used_key).toString().split(QLatin1Char(';'), Qt::SkipEmptyParts);
 }
 
 
@@ -642,11 +642,11 @@ bool XdgDesktopFile::save(QIODevice *device) const
         if (sect != section)
         {
             section = sect;
-            stream << QLatin1Char('[') << section << QLatin1Char(']') << endl;
+            stream << QLatin1Char('[') << section << QLatin1Char(']') << Qt::endl;
 
         }
         QString key = path.section(QLatin1Char('/'), 1);
-        stream << key << QLatin1Char('=') << i.value().toString() << endl;
+        stream << key << QLatin1Char('=') << i.value().toString() << Qt::endl;
         ++i;
     }
     return true;
@@ -859,7 +859,7 @@ QString XdgDesktopFile::fileName() const
 
 QStringList XdgDesktopFile::mimeTypes() const
 {
-    return value(mimeTypeKey).toString().split(QLatin1Char(';'), QString::SkipEmptyParts);
+    return value(mimeTypeKey).toString().split(QLatin1Char(';'), Qt::SkipEmptyParts);
 }
 
 
@@ -1451,7 +1451,7 @@ bool readDesktopFile(QIODevice & device, QSettings::SettingsMap & map)
 
         if (value.contains(QLatin1Char(';')))
         {
-            map.insert(key, value.split(QLatin1Char(';'), QString::SkipEmptyParts));
+            map.insert(key, value.split(QLatin1Char(';'), Qt::SkipEmptyParts));
         }
         else
         {
@@ -1554,7 +1554,7 @@ void XdgDesktopFileCache::initialize(const QString& dirName)
             m_fileCache.insert(f.absoluteFilePath(), df);
         }
 
-        const QStringList mimes = df->value(mimeTypeKey).toString().split(QLatin1Char(';'), QString::SkipEmptyParts);
+        const QStringList mimes = df->value(mimeTypeKey).toString().split(QLatin1Char(';'), Qt::SkipEmptyParts);
 
         for (const QString &mime : mimes)
         {
@@ -1610,7 +1610,7 @@ void loadMimeCacheDir(const QString& dirName, QHash<QString, QList<XdgDesktopFil
         if (!df)
             continue;
 
-        const QStringList mimes = df->value(mimeTypeKey).toString().split(QLatin1Char(';'), QString::SkipEmptyParts);
+        const QStringList mimes = df->value(mimeTypeKey).toString().split(QLatin1Char(';'), Qt::SkipEmptyParts);
 
         for (const QString &mime : mimes)
         {
