@@ -27,6 +27,10 @@ ThemeManager::ThemeManager(QObject *parent)
 
     // init value
     m_isDarkMode = m_settings->value("DarkMode", false).toBool();
+
+    // Start the DE and need to update the settings agin.
+    updateGtkFont();
+    updateGtkDarkTheme();
 }
 
 bool ThemeManager::isDarkMode()
