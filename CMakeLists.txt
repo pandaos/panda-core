@@ -10,14 +10,6 @@ set(QT Core Gui Widgets DBus X11Extras)
 find_package(Qt5 REQUIRED ${QT})
 find_package(PkgConfig REQUIRED)
 
-find_package(ECM REQUIRED NO_MODULE)
-set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR} ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
-
-include(KDEInstallDirs)
-include(KDECMakeSettings)
-include(KDECompilerSettings)
-include(FeatureSummary)
-
 add_subdirectory(session)
 add_subdirectory(shutdown)
 add_subdirectory(policykit)

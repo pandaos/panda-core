@@ -2,11 +2,6 @@ project(panda-settings-daemon)
 set(TARGET panda-settings-daemon)
 
 find_package(PulseAudio)
-find_package(XCB REQUIRED)
-
-include_directories (
-    ${XCB_INCLUDE_DIRS}
-)
 
 file (GLOB_RECURSE SRCS
   "*.cpp"
@@ -33,7 +28,6 @@ target_link_libraries(${TARGET}
         Qt5::DBus
         Qt5::X11Extras
         ${PULSEAUDIO_LIBRARY}
-        ${XCB_LIBRARIES}
 )
 
 install(TARGETS ${TARGET} DESTINATION /usr/bin)

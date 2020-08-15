@@ -5,7 +5,7 @@ System backend and start session and more.
 ## Dependencies
 
 ```shell
-sudo pacman -S pkgconf extra-cmake-modules qt5-base qt5-x11extras qt5-tools kidletime polkit polkit-qt5 pulseaudio
+sudo pacman -S pkgconf cmake qt5-base qt5-x11extras qt5-tools kidletime polkit polkit-qt5 pulseaudio
 ```
 
 ## Build

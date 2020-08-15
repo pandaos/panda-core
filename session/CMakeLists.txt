@@ -1,7 +1,7 @@
 project(panda-session)
 set(TARGET panda-session)
 
-find_package(KF5 REQUIRED COMPONENTS IdleTime)
+find_package(KF5IdleTime)
 
 file (GLOB_RECURSE SRCS
   "src/*.cpp"
