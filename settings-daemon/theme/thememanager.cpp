@@ -7,6 +7,16 @@ static const QByteArray s_systemFixedFontName = QByteArrayLiteral("FixedFont");
 static const QByteArray s_systemPointFontSize = QByteArrayLiteral("FontSize");
 static const QByteArray s_devicePixelRatio = QByteArrayLiteral("PixelRatio");
 
+static QString gtkRc2Path()
+{
+    return QDir::homePath() + QLatin1String("/.gtkrc-2.0");
+}
+
+static QString gtk3SettingsIniPath()
+{
+    return QStandardPaths::writableLocation(QStandardPaths::GenericConfigLocation) + QLatin1String("/gtk-3.0/settings.ini");
+}
+
 ThemeManager::ThemeManager(QObject *parent)
   : QObject(parent),
     m_settings(new QSettings(QStringLiteral("panda"), QStringLiteral("theme")))
@@ -42,6 +52,7 @@ QString ThemeManager::systemFont()
 void ThemeManager::setSystemFont(const QString &fontFamily)
 {
     m_settings->setValue(s_systemFontName, fontFamily);
+    updateGtkFont();
 }
 
 QString ThemeManager::systemFixedFont()
@@ -62,6 +73,7 @@ qreal ThemeManager::systemFontPointSize()
 void ThemeManager::setSystemFontPointSize(qreal fontSize)
 {
     m_settings->setValue(s_systemPointFontSize, fontSize);
+    updateGtkFont();
 }
 
 qreal ThemeManager::devicePixelRatio()
@@ -76,5 +88,9 @@ void ThemeManager::setDevicePixelRatio(qreal ratio)
 
 void ThemeManager::updateGtkFont()
 {
-
+    QSettings settings(gtk3SettingsIniPath(), QSettings::IniFormat);
+    settings.setIniCodec("UTF-8");
+    settings.beginGroup("Settings");
+    settings.setValue("gtk-font-name", QString("%1 %2").arg(systemFont()).arg(systemFontPointSize()));
+    settings.sync();
 }
