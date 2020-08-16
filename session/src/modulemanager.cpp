@@ -49,12 +49,12 @@ void ModuleManager::startup()
 
     QProcess *deskProc = new QProcess(this);
     QProcess *taskProc = new QProcess(this);
-    QProcess *topbarProc = new QProcess(this);
+    QProcess *menubarProc = new QProcess(this);
     QProcess *launcherProc = new QProcess(this);
 
     deskProc->start("/usr/bin/panda-files", QStringList() << "--desktop");
     taskProc->start("/usr/bin/panda-dock", QStringList());
-    topbarProc->start("/usr/bin/panda-topbar", QStringList());
+    menubarProc->start("/usr/bin/panda-menubar", QStringList());
     launcherProc->start("/usr/bin/panda-launcher", QStringList());
 }
 
