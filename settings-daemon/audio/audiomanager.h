@@ -27,6 +27,8 @@
 class AudioManager : public QObject
 {
     Q_OBJECT
+    Q_PROPERTY(int volume READ volume WRITE setVolume)
+    Q_PROPERTY(bool mute READ mute WRITE setMute)
 
 public:
     AudioManager(QObject *parent = nullptr);

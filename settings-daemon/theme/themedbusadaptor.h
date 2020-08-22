@@ -27,6 +27,12 @@ class ThemeDBusAdaptor : public QDBusAbstractAdaptor
 {
     Q_OBJECT
     Q_CLASSINFO("D-Bus Interface", "org.panda.Theme")
+    Q_PROPERTY(bool darkMode READ darkMode WRITE setDarkMode)
+    Q_PROPERTY(QString systemFont READ systemFont WRITE setSystemFont)
+    Q_PROPERTY(QString systemFixedFont READ systemFixedFont WRITE setSystemFixedFont)
+    Q_PROPERTY(qreal systemFontPointSize READ systemFontPointSize WRITE setSystemFontPointSize)
+    Q_PROPERTY(qreal devicePixelRatio READ devicePixelRatio WRITE setDevicePixelRatio)
+
 
 public:
     ThemeDBusAdaptor(ThemeManager *parent)

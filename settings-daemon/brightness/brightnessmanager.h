@@ -26,6 +26,8 @@
 class BrightnessManager : public QObject
 {
     Q_OBJECT
+    Q_PROPERTY(int maxBrightness READ maxBrightness)
+    Q_PROPERTY(int brightness READ brightness WRITE setValue)
 
 public:
     BrightnessManager(QObject *parent = nullptr);

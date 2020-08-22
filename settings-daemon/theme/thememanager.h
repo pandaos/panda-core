@@ -26,6 +26,11 @@
 class ThemeManager : public QObject
 {
     Q_OBJECT
+    Q_PROPERTY(bool isDarkMode READ isDarkMode WRITE setDarkMode)
+    Q_PROPERTY(QString systemFont READ systemFont WRITE setSystemFont)
+    Q_PROPERTY(QString systemFixedFont READ systemFixedFont WRITE setSystemFixedFont)
+    Q_PROPERTY(qreal systemFontPointSize READ systemFontPointSize WRITE setSystemFontPointSize)
+    Q_PROPERTY(qreal devicePixelRatio READ devicePixelRatio WRITE setDevicePixelRatio)
 
 public:
     ThemeManager(QObject *parent = nullptr);

@@ -27,6 +27,8 @@ class AudioDBusAdaptor : public QDBusAbstractAdaptor
 {
     Q_OBJECT
     Q_CLASSINFO("D-Bus Interface", "org.panda.Audio")
+    Q_PROPERTY(int volume READ volume WRITE setVolume)
+    Q_PROPERTY(bool mute READ mute WRITE setMute)
 
 public:
     AudioDBusAdaptor(AudioManager *parent)

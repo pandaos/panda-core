@@ -27,6 +27,8 @@ class BrightnessDBusAdaptor : public QDBusAbstractAdaptor
 {
     Q_OBJECT
     Q_CLASSINFO("D-Bus Interface", "org.panda.Brightness")
+    Q_PROPERTY(int maxBrightness READ maxBrightness)
+    Q_PROPERTY(int brightness READ brightness WRITE setValue)
 
 public:
     BrightnessDBusAdaptor(BrightnessManager *parent)
