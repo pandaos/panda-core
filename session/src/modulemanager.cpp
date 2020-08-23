@@ -54,7 +54,7 @@ void ModuleManager::startup()
 
     deskProc->start("/usr/bin/panda-files", QStringList() << "--desktop");
     taskProc->start("/usr/bin/panda-dock", QStringList());
-    menubarProc->start("/usr/bin/panda-menubar", QStringList());
+    menubarProc->start("/usr/bin/panda-statusbar", QStringList());
     launcherProc->start("/usr/bin/panda-launcher", QStringList());
 }
 
