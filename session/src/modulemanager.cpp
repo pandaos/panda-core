@@ -58,7 +58,7 @@ void ModuleManager::startup()
     launcherProc->start("/usr/bin/panda-launcher", QStringList());
     xembedsniproxyProc->start("/usr/bin/panda-xembedsniproxy", QStringList());
 
-    startAutostartApps();
+    QTimer::singleShot(500, this, &ModuleManager::startAutostartApps);
 }
 
 void ModuleManager::startProcess(const QString &name)
