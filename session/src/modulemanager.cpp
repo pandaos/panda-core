@@ -45,17 +45,20 @@ void ModuleManager::startup()
 {
     startWm();
     startSettingsDaemon();
-    startAutostartApps();
 
     QProcess *deskProc = new QProcess(this);
     QProcess *taskProc = new QProcess(this);
     QProcess *menubarProc = new QProcess(this);
     QProcess *launcherProc = new QProcess(this);
+    QProcess *xembedsniproxyProc = new QProcess(this);
 
     deskProc->start("/usr/bin/panda-files", QStringList() << "--desktop");
     taskProc->start("/usr/bin/panda-dock", QStringList());
     menubarProc->start("/usr/bin/panda-statusbar", QStringList());
     launcherProc->start("/usr/bin/panda-launcher", QStringList());
+    xembedsniproxyProc->start("/usr/bin/panda-xembedsniproxy", QStringList());
+
+    startAutostartApps();
 }
 
 void ModuleManager::startProcess(const QString &name)
