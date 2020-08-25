@@ -18,7 +18,7 @@
  */
 
 #include "brightnessmanager.h"
-#include "brightnessdbusadaptor.h"
+#include "brightnessadaptor.h"
 #include <QProcess>
 #include <QDebug>
 #include <QFile>
@@ -33,7 +33,7 @@ BrightnessManager::BrightnessManager(QObject *parent)
       m_fileWatcher(new QFileSystemWatcher(this))
 {
     // init dbus
-    new BrightnessDBusAdaptor(this);
+    new BrightnessAdaptor(this);
     QDBusConnection::sessionBus().registerObject(QStringLiteral("/Brightness"), this);
 
     init();

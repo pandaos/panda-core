@@ -38,7 +38,7 @@ public:
 
     void setValue(int value);
 
-signals:
+Q_SIGNALS:
     void brightnessChanged();
 
 private:

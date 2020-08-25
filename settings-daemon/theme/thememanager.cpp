@@ -18,7 +18,7 @@
  */
 
 #include "thememanager.h"
-#include "themedbusadaptor.h"
+#include "themeadaptor.h"
 #include <QDebug>
 
 static const QByteArray s_systemFontName = QByteArrayLiteral("Font");
@@ -41,7 +41,7 @@ ThemeManager::ThemeManager(QObject *parent)
     m_settings(new QSettings(QStringLiteral("panda"), QStringLiteral("theme")))
 {
     // init dbus
-    new ThemeDBusAdaptor(this);
+    new ThemeAdaptor(this);
     QDBusConnection::sessionBus().registerObject(QStringLiteral("/Theme"), this);
 
     // init value

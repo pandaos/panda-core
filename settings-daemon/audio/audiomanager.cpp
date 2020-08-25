@@ -18,7 +18,7 @@
  */
 
 #include "audiomanager.h"
-#include "audiodbusadaptor.h"
+#include "audioadaptor.h"
 #include <QDebug>
 
 AudioManager::AudioManager(QObject *parent)
@@ -29,11 +29,12 @@ AudioManager::AudioManager(QObject *parent)
 {
     if (m_engine->sinks().count() > 0) {
         m_defaultSink = m_engine->sinks().at(qBound(0, m_defaultSinkIndex, m_engine->sinks().count() - 1));
+
+        new AudioAdaptor(this);
+        QDBusConnection::sessionBus().registerObject(QStringLiteral("/Audio"), this);
+
         connect(m_defaultSink, &AudioDevice::volumeChanged, this, &AudioManager::volumeChanged);
         connect(m_defaultSink, &AudioDevice::muteChanged, this, &AudioManager::muteChanged);
-
-        new AudioDBusAdaptor(this);
-        QDBusConnection::sessionBus().registerObject(QStringLiteral("/Audio"), this);
     }
 }
 

@@ -20,7 +20,19 @@ set(HEADERS "")
 set(FORMS "")
 set(RESOURCES "")
 
-add_executable(${TARGET} ${SOURCES} ${HEADERS} ${FORMS} ${RESOURCES})
+qt5_add_dbus_adaptor(DBUS_SOURCES
+                     audio/org.panda.Audio.xml
+                     audio/audiomanager.h AudioManager)
+qt5_add_dbus_adaptor(DBUS_SOURCES
+                     brightness/org.panda.Brightness.xml
+                     brightness/brightnessmanager.h BrightnessManager)
+qt5_add_dbus_adaptor(DBUS_SOURCES
+                     theme/org.panda.Theme.xml
+                     theme/thememanager.h ThemeManager)
+
+set_source_files_properties(${DBUS_SOURCES} PROPERTIES SKIP_AUTOGEN ON)
+
+add_executable(${TARGET} ${SOURCES} ${DBUS_SOURCES} ${HEADERS} ${FORMS} ${RESOURCES})
 target_link_libraries(${TARGET}
         Qt5::Core
         Qt5::Gui

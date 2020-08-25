@@ -39,7 +39,7 @@ public:
     void toggleMute();
     void setMute(bool state);
 
-signals:
+Q_SIGNALS:
     void volumeChanged(int volume);
     void muteChanged(bool state);
 
