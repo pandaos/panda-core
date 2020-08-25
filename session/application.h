@@ -22,6 +22,7 @@
 
 #include <QApplication>
 #include "modulemanager.h"
+#include "power/power.h"
 
 class Application : public QApplication
 {
@@ -29,6 +30,36 @@ class Application : public QApplication
 
 public:
     explicit Application(int &argc, char **argv);
+
+public slots:
+    void logout()
+    {
+        m_moduleManager->logout(true);
+    }
+
+    void reboot()
+    {
+        m_moduleManager->logout(false);
+        m_power.reboot();
+        QCoreApplication::exit(0);
+    }
+
+    void powerOff()
+    {
+        m_moduleManager->logout(false);
+        m_power.shutdown();
+        QCoreApplication::exit(0);
+    }
+
+    void startModule(const QString& name)
+    {
+        m_moduleManager->startProcess(name);
+    }
+
+    void stopModule(const QString& name)
+    {
+        m_moduleManager->stopProcess(name);
+    }
 
 private:
     int runSync(const QString& program, const QStringList &args, const QStringList &env = {});
@@ -40,6 +71,7 @@ private:
 
 private:
     ModuleManager *m_moduleManager;
+    Power m_power;
 };
 
 #endif // APPLICATION_H

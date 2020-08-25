@@ -18,7 +18,7 @@
  */
 
 #include "application.h"
-#include "sessiondbusadaptor.h"
+#include "sessionadaptor.h"
 #include <QStandardPaths>
 #include <QProcess>
 #include <QTimer>
@@ -30,10 +30,10 @@ Application::Application(int &argc, char **argv)
     : QApplication(argc, argv),
       m_moduleManager(new ModuleManager)
 {
-    new SessionDBusAdaptor(m_moduleManager);
+    new SessionAdaptor(this);
     // connect to D-Bus and register as an object:
-    QDBusConnection::sessionBus().registerService(QSL("org.panda.session"));
-    QDBusConnection::sessionBus().registerObject(QSL("/PandaSession"), m_moduleManager);
+    QDBusConnection::sessionBus().registerService(QSL("org.panda.Session"));
+    QDBusConnection::sessionBus().registerObject(QSL("/Session"), this);
 
     createConfigDirectory();
 

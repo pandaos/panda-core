@@ -21,9 +21,9 @@
 #include <QCommandLineParser>
 #include <QDBusInterface>
 
-const static QString s_dbusName = "org.panda.session";
-const static QString s_pathName = "/PandaSession";
-const static QString s_interfaceName = "org.panda.session";
+const static QString s_dbusName = "org.panda.Session";
+const static QString s_pathName = "/Session";
+const static QString s_interfaceName = "org.panda.Session";
 
 int main(int argc, char *argv[])
 {
